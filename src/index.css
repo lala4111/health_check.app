@@ -122,3 +122,8 @@ code {
   max-width: 100%;
   height: auto;
 }
+
+.btn-primary btn-lg{
+  margin: 15px;
+  justify-content: center
+}
