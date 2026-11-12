@@ -47,7 +47,7 @@ function Weather_Check(){
             {weather === "Clouds" && (
             <>
             <h3>It's cloudy ☁️</h3>
-            <p>Do you feel a little tired? or Had headache?</p>
+            <p>Do you feel a little tired? or having headache?</p>
             </>)}
         </div>);
 }
