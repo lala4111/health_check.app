@@ -35,6 +35,7 @@ function Submission({mood}){
         <Mood_Evaluator mood = {mood} />
         <p>I hope this picture helps you to feel better!</p>
         {image && <img src={image} alt="Picture" style={{ width: "400px" }}></img>}
+        
     </div>);
 }
 
