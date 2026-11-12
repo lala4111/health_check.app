@@ -15,7 +15,13 @@ function Checkin() {
       <br />
       <br />
       
-      {submitYes?(<Submission mood = {mood}/>) : 
+      {submitYes?(
+      <>
+       <Submission mood = {mood}/> 
+       
+      <button button type="button" className="btn btn-warning mt-3" onClick={() => window.location.hash = '/graph'}>Check in the graph</button>
+      <button button type="button" className="btn btn-warning mt-3" onClick={() => setSubmitted(false)}>Return Home</button>
+      </>) : 
 
       (
       <>
@@ -36,8 +42,8 @@ function Checkin() {
       </>
       )}
        
-      <button button type="button" className="btn btn-primary btn-lg mt-3" id = "submission"  onClick={() => setSubmitted(true)
-      }>Submit</button>
+      {!submitYes && <button button type="button" className="btn btn-primary btn-lg mt-3" id = "submission"  onClick={() => setSubmitted(true)
+      }>Submit</button>}
 
       
       
