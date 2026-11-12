@@ -1,38 +1,35 @@
-import { useState } from 'react'
-import heroImg from './assets/hero.png'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
+import { useEffect, useState } from 'react'
 import './App.css'
+import Checkin from './pages/Checkin.jsx'
+import Graph from './pages/Graph.jsx'
+import History from './pages/History.jsx'
+import Navi from './components/Navi.jsx'
 
-
-function App() {
-  
-return (
-    <nav className="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
-  <div className="container-fluid">
-    <a className="navbar-brand" href="#">Mental Health Check</a>
-    
-    <div class="collapse navbar-collapse" id="navbarColor01">
-      <ul class="navbar-nav me-auto">
-        <li class="nav-item">
-          <a class="nav-link active" href="src/pages/Checkin.jsx">Home/ CheckIn 
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="src/pages/Graph.jsx">Graph</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="src/pages/History.jsx">History</a>
-        </li>
-
-      </ul>
-      
-    </div>
-  </div>
-</nav>
-  )
+function getCurrentPage() {
+  return window.location.hash.slice(2) || 'checkin'
 }
 
+function App() {
+  const [page, setPage] = useState(getCurrentPage)
 
+  useEffect(() => {
+    const handleHashChange = () => setPage(getCurrentPage())
+    window.addEventListener('hashchange', handleHashChange)
+    return () => window.removeEventListener('hashchange', handleHashChange)
+  }, [])
+
+  const pages = {
+    checkin: <Checkin />,
+    graph: <Graph />,
+    history: <History />,
+  }
+
+  return (
+    <>
+      <Navi />
+      {pages[page] ?? <Checkin />}
+    </>
+  )
+}
 
 export default App
