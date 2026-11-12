@@ -109,3 +109,16 @@ code {
   padding: 4px 8px;
   background: var(--code-bg);
 }
+
+.mood_images {
+  display: flex;
+  gap: 5px;
+  justify-content: center;
+}
+
+.mood_images img {
+  flex: 0 1 150px;
+  min-width: 0;
+  max-width: 100%;
+  height: auto;
+}
