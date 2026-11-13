@@ -1,11 +1,6 @@
 
 
-function History() {
-
-  const data = [
-    {id: 1, date: "2026-11-1", mood: "Very Happy", weather: "Sunny"},
-    {id: 2, date: "2026-11-2", mood: "Very Happy", weather: "Sunny"}
-  ]
+function History({ checkins }) {
   return (
     <>
     <main className="container py-4">
@@ -19,10 +14,10 @@ function History() {
           </tr>
         </thead>
         <tbody>
-          {data.map((item) =>(
+          {checkins.map((item) =>(
           <tr key = {item.id}>
             <td>{item.date}</td>
-            <td>{item.mood}</td>
+            <td>{item.moodLabel}</td>
             <td>{item.weather}</td>
           </tr>))}
         </tbody>

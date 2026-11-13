@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
-import Checkin from "../pages/Checkin";
-import Mood_Evaluator from "./Mood_Evaluator";
 
-function Submission({mood}){
+
+function Submission({mood,weather}){
     const [image, setImages] = useState("");
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -15,8 +14,6 @@ function Submission({mood}){
             if(!res.ok){
                 throw new Error(`HTTP error: ${res.status}`);
             }
-
-            
             const data = await res.json();
 
             setImages(data.message);
@@ -32,7 +29,6 @@ function Submission({mood}){
     if (error) return <p>Error: {error}</p>; // show if failed
     return (<div>
         <h1>Thank you for your checkin! </h1>
-        <Mood_Evaluator mood = {mood} />
         <p>I hope this picture helps you to feel better!</p>
         {image && <img src={image} alt="Picture" style={{ width: "400px" }}></img>}
         

@@ -1,12 +1,33 @@
 import Submission from "../components/Submission";
 import { useState } from "react";
-import {useEffect} from "react";
 import Weather_Check from "../components/Weather_Check";
 
-function Checkin() {
+const moodLabels = {
+  1: "Very Sad 🤕",
+  2: "Sad 😢",
+  3: "Normal 🙂",
+  4: "Happy 😀",
+  5: "Very Happy 😄",
+}
+
+function Checkin({ onAddCheckin }) {
   const [submitYes, setSubmitted] = useState(false);
   const [mood, setMood] = useState(false);
+  const [weather, setWeather] = useState("Unknown");
 
+  function handleSubmit(){
+    if (!mood) return
+
+    const now = new Date()
+    onAddCheckin({
+      id: `${Date.now()}-${Math.random()}`,
+      date: `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, "0")}-${String(now.getDate()).padStart(2, "0")}`,
+      mood,
+      moodLabel: moodLabels[mood],
+      weather,
+    })
+    setSubmitted(true)
+  }
 
   return (
     <main className="container py-4">
@@ -28,7 +49,7 @@ function Checkin() {
       <div>
         <h1>Welcome! Please check-in!</h1>
         <br />
-        <Weather_Check/>
+        <Weather_Check onWeatherChange={setWeather} />
         <br />
         <h4>How do you feel about your day?</h4>
       </div>
@@ -42,8 +63,7 @@ function Checkin() {
       </>
       )}
        
-      {!submitYes && <button button type="button" className="btn btn-primary btn-lg mt-3" id = "submission"  onClick={() => setSubmitted(true)
-      }>Submit</button>}
+      {!submitYes && <button type="button" className="btn btn-primary btn-lg mt-3" id="submission" disabled={!mood} onClick={handleSubmit}>Submit</button>}
 
       
       
