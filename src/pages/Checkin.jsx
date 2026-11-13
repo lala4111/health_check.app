@@ -3,8 +3,8 @@ import { useState } from "react";
 import Weather_Check from "../components/Weather_Check";
 import happy from '../assets/happy.png';
 import sad from '../assets/sad.png';
-import little_sasd from '../assets/little_sad.png';
-import normal from '../assets/little_sad.png';
+import little_sad from '../assets/little_sad.png';
+import normal from '../assets/normal.png';
 import very_happy from '../assets/very_happy.png';
 
 const moodLabels = {
@@ -60,7 +60,7 @@ function Checkin({ onAddCheckin }) {
       </div>
       <div className="mood_images">
         <img src={sad} alt="sad picture"  onClick={() =>setMood(1)}/>
-        <img src={little_sasd} alt="little_sad picture" onClick={() =>setMood(2)}/>
+        <img src={little_sad} alt="little_sad picture" onClick={() =>setMood(2)}/>
         <img src={normal} alt="normal picture" onClick={() =>setMood(3)}/>
         <img src={happy} alt="happy picture" onClick={() =>setMood(4)} />
         <img src={very_happy} alt="very happy picture" onClick={() =>setMood(5)} />
