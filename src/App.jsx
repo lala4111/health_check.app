@@ -5,11 +5,17 @@ import Graph from './pages/Graph.jsx'
 import History from './pages/History.jsx'
 import Navi from './components/Navi.jsx'
 
+
 function getCurrentPage() {
   return window.location.hash.slice(2) || 'checkin'
 }
 
 function App() {
+  const [checkins, setCheckins] = useState([])
+  function addCheckin(checkin) {
+    setCheckins((current) => [...current, checkin])
+  }
+
   const [page, setPage] = useState(getCurrentPage)
 
   useEffect(() => {
@@ -19,15 +25,15 @@ function App() {
   }, [])
 
   const pages = {
-    checkin: <Checkin />,
-    graph: <Graph />,
-    history: <History />,
+    checkin: <Checkin onAddCheckin={addCheckin} />,
+    graph: <Graph checkins={checkins} />,
+    history: <History checkins={checkins} />,
   }
 
   return (
     <>
       <Navi />
-      {pages[page] ?? <Checkin />}
+      {pages[page] ?? <Checkin onAddCheckin={addCheckin} />}
     </>
   )
 }

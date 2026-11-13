@@ -3,7 +3,7 @@
 
 
 
-function Weather_Check(){
+function Weather_Check({ onWeatherChange }){
     const API_KEY = import.meta.env.VITE_API_KEY;
     const [weather, setWeather] = useState("");
     const [isLoading, setIsLoading] = useState(true);
@@ -21,19 +21,23 @@ function Weather_Check(){
     
                 const data = await res.json();
     
-                setWeather(data.weather[0].main);
+                const currentWeather = data.weather[0].main
+                setWeather(currentWeather);
+                onWeatherChange(currentWeather)
             } catch(err){
                 setError(err.message);
             }finally{
                 setIsLoading(false);
             }
         }; getData();
-        }, [])
+        }, [API_KEY, onWeatherChange])
     
         if (isLoading) return <p>Loading...</p>; 
         if (error) return <p>Error: {error}</p>; 
 
-        return (<div>
+        return (
+        <>
+        <div>
             {weather === "Rain" && 
             (<>
             <h3>It's rainy ☔️ at The moment</h3>
@@ -49,7 +53,14 @@ function Weather_Check(){
             <h3>It's cloudy ☁️</h3>
             <p>Do you feel a little tired? or having headache?</p>
             </>)}
-        </div>);
+
+            {!["Rain","Clear","Clouds"].includes(weather) && (
+                <p>It is {weather} today !</p>
+            )}
+        </div>
+
+
+        </>);
 }
 
 export default Weather_Check;
