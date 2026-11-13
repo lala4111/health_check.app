@@ -1,11 +1,11 @@
 import Submission from "../components/Submission";
 import { useState } from "react";
-import Weather_Check from "../components/Weather_Check";
-import happy from './assets/happy.png';
-import sad from './assets/sad.png';
-import little_sasd from './assets/little_sad.png';
-import normal from './assets/little_sad.png';
-import very_happy from './assets/very_happy.png';
+import Weather_Check from "./components/Weather_Check";
+import happy from '../assets/happy.png';
+import sad from '../assets/sad.png';
+import little_sasd from '../assets/little_sad.png';
+import normal from '../assets/little_sad.png';
+import very_happy from '../assets/very_happy.png';
 
 const moodLabels = {
   1: "Very Sad 🤕",
