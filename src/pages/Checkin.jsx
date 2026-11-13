@@ -1,6 +1,11 @@
 import Submission from "../components/Submission";
 import { useState } from "react";
 import Weather_Check from "../components/Weather_Check";
+import happy from './assets/happy.png';
+import sad from './assets/sad.png';
+import little_sasd from './assets/little_sad.png';
+import normal from './assets/little_sad.png';
+import very_happy from './assets/very_happy.png';
 
 const moodLabels = {
   1: "Very Sad 🤕",
@@ -54,11 +59,11 @@ function Checkin({ onAddCheckin }) {
         <h4>How do you feel about your day?</h4>
       </div>
       <div className="mood_images">
-        <img src="src/assets/sad.png" alt="sad picture"  onClick={() =>setMood(1)}/>
-        <img src="src/assets/little_sad.png" alt="little_sad picture" onClick={() =>setMood(2)}/>
-        <img src="src/assets/normal.png" alt="normal picture" onClick={() =>setMood(3)}/>
-        <img src="src/assets/happy.png" alt="happy picture" onClick={() =>setMood(4)} />
-        <img src="src/assets/very_happy.png" alt="very happy picture" onClick={() =>setMood(5)} />
+        <img src={sad} alt="sad picture"  onClick={() =>setMood(1)}/>
+        <img src={little_sasd} alt="little_sad picture" onClick={() =>setMood(2)}/>
+        <img src={normal} alt="normal picture" onClick={() =>setMood(3)}/>
+        <img src={happy} alt="happy picture" onClick={() =>setMood(4)} />
+        <img src={very_happy} alt="very happy picture" onClick={() =>setMood(5)} />
       </div>
       </>
       )}
