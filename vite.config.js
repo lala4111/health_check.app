@@ -4,6 +4,6 @@ import { defineConfig } from 'vite'
 
 // https://vite.dev/config/
 export default defineConfig({
-  base:'/health_check.app',
+  base:'/health_check.app/',
   plugins: [react()],
 })
