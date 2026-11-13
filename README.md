@@ -21,15 +21,18 @@ If you are developing a production application, we recommend using TypeScript wi
 
 # When you run it locally
 
-Please install recharts,bootstraps, and get an API key for weather API
+Please install recharts,bootstraps, and react components, and get an API key for weather API
 
 run these codes for recharts
 
-npm install recharts
+- npm install recharts
 
 run this code for bootstraps 
 
-npm install bootstrap bootswatch
+- npm install bootstrap bootswatch
+
+- npm install react-bootstrap
+
 
 Login to this API and get an API key and place it in .env file and in the .env file  create this variable and place your key like below. 
 
