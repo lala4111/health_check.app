@@ -1,4 +1,4 @@
-import Submission from "../components/Submission";
+import Submission from "./Submission";
 import { useState } from "react";
 import Weather_Check from "../components/Weather_Check";
 import happy from '../assets/happy.png';
